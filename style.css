@@ -1,0 +1,116 @@
+:root {
+  --white: #fff;
+  --black: #051519;
+  --accent: #ff5b5b;
+  --accent2: #92d3a2;
+}
+
+
+html {
+    font-family: 'Roboto Slab', monospace;
+    background-color: bisque;
+}
+
+
+body {
+      }
+
+.holder{
+  margin: 4em auto auto auto;
+  padding: 2em 1em 1em 1em;
+  background: var(--black);
+/*  box-shadow: 0 4px 0.625em 0 rgba(0,0,0,0.4);
+*/  max-width: 40em;
+}
+
+.linkbox {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  padding: 0;
+}
+
+.linkchild {
+  color: var(--white);
+  transition: ease-in-out 0.05s;
+  text-align: center;
+  font-size: 0.8em;
+  margin: 0.3em;
+}
+
+.linkchild:hover {
+  background-color: var(--accent2);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  padding: 1em 1.5em 1em 1.5em;
+  line-height: 3em;
+}
+
+p.link-cats {
+  color: var(--white);
+  padding: 0.375em 0 0.375em 0.375em;
+  font-size: 0.875em;
+  font-weight: normal;
+  margin: 0;
+}
+
+.statusbar {
+  display: inline-block;
+  height: 16px;
+  width: 100%;
+  background-color: grey;
+  font-size: 0.8em;
+  line-height: 16px;
+padding: 0;
+margin: 0;}
+
+.statusbox {
+  display: inline-block;
+  text-align: center;
+  background-color: inherit;
+
+}
+
+.mode {
+  background-color: white;
+  color: black;
+  width: 24px;
+}
+
+.file {
+  background-color: #ff875f;
+  width: 88px;
+  color: white;
+}
+
+.search {
+  border: none;
+  font:inherit;
+  padding: 0;
+  padding-left: 1em;
+  color: white;
+  width: 60%;
+  margin:0;
+  text-align: left;
+
+}
+
+.search:focus {
+  outline: none;
+}
+
+.time {
+  background-color: #5fafaf;
+  color: white;
+  width: 72px;
+  float: right;
+}
+
+
+/* selection colors */
+::selection {
+/*  background: var(--white);
+*/}
