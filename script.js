@@ -43,11 +43,6 @@ function aTitle(e) {
 	e.title = e.href;
 }
 
-// focus the search box on load
-window.onload = function() {
-	document.getElementById("search box").focus();
-};
-
 // parse the user's command
 function parseCom(com) {
 	// handle help command
