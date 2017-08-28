@@ -8,7 +8,7 @@
 
 <body>
     <div class="holder">
-    
+
         <p class="link-cats">utility</p>
         <ul class="linkbox">
             <li class="linkchild"> <a href="https://github.com/">github</a> </li>
@@ -49,8 +49,7 @@
         </ul>
 
         <div class="statusbar">
-            <div class="statusbox mode">I</div><div class="statusbox file">home.html</div>
-            <input type="text" id="search" class="statusbox search" autofocus placeholder="" onkeypress="return searchKeyPress(event)"></input>
+            <div class="statusbox mode">I</div><div class="statusbox file">home.html</div><input type="text" id="search" class="statusbox search" autofocus placeholder="" onkeypress="return searchKeyPress(event)"></input>
             <div id="time" class="statusbox time">
                 <script>
                     var interval;
@@ -178,7 +177,7 @@
 
                     sunrise = fromJulian(Jrise);
                     sunset = fromJulian(Jset);
-                    document.getElementById("solar").innerHTML = sunset.getHours() + ":" + sunset.getMinutes();
+                    document.getElementById("solar").innerHTML = "sunset: " +  sunset.getHours() + ":" + sunset.getMinutes();
                 </script>
             </div>
         </div>

@@ -71,18 +71,19 @@ margin: 0;}
   display: inline-block;
   text-align: center;
   background-color: inherit;
-
+    padding-left: 1em;
+  padding-right: 1em;
 }
 
 .mode {
   background-color: white;
   color: black;
   width: 24px;
+  padding: 0;
 }
 
 .file {
   background-color: #ff875f;
-  width: 88px;
   color: white;
 }
 
@@ -92,9 +93,10 @@ margin: 0;}
   padding: 0;
   padding-left: 1em;
   color: white;
-  width: 50%;
   margin:0;
   text-align: left;
+      overflow:hidden;
+
 }
 
 .search:focus {
@@ -104,13 +106,14 @@ margin: 0;}
 .time {
   background-color: #5fafaf;
   color: white;
-  width: 72px;
   float: right;
 }
 
 .solar {
   background-color: #92d3a2;
   color: white;
+  float: right;
+
 }
 
 
