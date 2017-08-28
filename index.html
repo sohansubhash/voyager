@@ -49,7 +49,7 @@
         </ul>
 
         <div class="statusbar">
-            <div class="statusbox mode">I</div><div class="statusbox file">home.html</div><input type="text" id="search" class="statusbox search" autofocus placeholder="" onkeypress="return searchKeyPress(event)"></input>
+            <div class="statusbox mode">I</div><div class="statusbox file">index.html</div><input type="text" id="search" class="statusbox search" autofocus placeholder="" onkeypress="return searchKeyPress(event)"></input>
             <div id="time" class="statusbox time">
                 <script>
                     var interval;
@@ -85,8 +85,28 @@
             <div id="solar" class="statusbox solar">
                 <script>
                     var date = new Date(),
-                        lat = 37.8719,
-                        lng = -122.2585;
+                    oldSunset = new Date(localStorage.getItem("sunset")),
+                    oldSunrise = new Date(localStorage.getItem("sunrise"));                    
+
+                    function display(date) {
+                      var newSunset = new Date(localStorage.getItem("sunset")),
+                    newSunrise = new Date(localStorage.getItem("sunrise"));                    
+                    if (date > newSunrise) {
+                      alert( newSunset);
+                      document.getElementById("solar").innerHTML = "sunset: " +  newSunset.getHours() + ":" + newSunset.getMinutes();
+                    } else {
+                      document.getElementById("solar").innerHTML = "sunrise: " +  newSunrise.getHours() + ":" + newSunrise.getMinutes();
+                    }                    
+                  }
+
+                    if (oldSunset=== null || oldSunrise === null || oldSunset < date){
+                      update(date);
+                    }
+
+                    display(date);
+
+                    function update(date){
+alert("udpating date ");
 
                     var PI = Math.PI,
                         sin = Math.sin,
@@ -101,6 +121,9 @@
                         dayMs = 1000 * 60 * 60 * 24,
                         J1970 = 2440588,
                         J2000 = 2451545;
+                        lat = 37.8719,
+                        lng = -122.2585;
+
 
                     function toDays(date) {
                         return toJulian(date) - J2000;
@@ -175,9 +198,10 @@
                     Jset = getSetJ(time * rad, lw, phi, dec, n, M, L);
                     Jrise = Jnoon - (Jset - Jnoon);
 
-                    sunrise = fromJulian(Jrise);
-                    sunset = fromJulian(Jset);
-                    document.getElementById("solar").innerHTML = "sunset: " +  sunset.getHours() + ":" + sunset.getMinutes();
+                    localStorage.setItem("sunrise", fromJulian(Jrise).dateString());
+                    localStorage.setItem("sunset", fromJulian(Jset).dateString());
+                                      }
+
                 </script>
             </div>
         </div>
