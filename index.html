@@ -92,22 +92,21 @@
                       var newSunset = new Date(localStorage.getItem("sunset")),
                     newSunrise = new Date(localStorage.getItem("sunrise"));                    
                     if (date > newSunrise) {
-                      alert( newSunset);
                       document.getElementById("solar").innerHTML = "sunset: " +  newSunset.getHours() + ":" + newSunset.getMinutes();
                     } else {
                       document.getElementById("solar").innerHTML = "sunrise: " +  newSunrise.getHours() + ":" + newSunrise.getMinutes();
                     }                    
                   }
 
-                    if (oldSunset=== null || oldSunrise === null || oldSunset < date){
-                      update(date);
-                    }
+                    // if (oldSunset=== null || oldSunrise === null){
+                    //   update(date);
+                    // } else if (oldSunset < date){
+                    //   update(date )
+                    // }
+                                        //   update(date )
 
                     display(date);
-
                     function update(date){
-alert("udpating date ");
-
                     var PI = Math.PI,
                         sin = Math.sin,
                         cos = Math.cos,
