@@ -22,8 +22,9 @@ body {
   margin: 4em auto auto auto;
   padding: 2em 1em 1em 1em;
   background: var(--black);
-/*  box-shadow: 0 4px 0.625em 0 rgba(0,0,0,0.4);
-*/  max-width: 40em;
+  /*box-shadow: 0 4px 0.625em 0 rgba(0,0,0,0.4); */
+  max-width: 40em;
+  min-width: 25em;  
 }
 
 .linkbox {
@@ -41,9 +42,14 @@ body {
   margin: 0.3em;
 }
 
-.linkchild:hover {
+.accent1:hover {
+  background-color: var(--accent);
+}
+
+.accent2:hover {
   background-color: var(--accent2);
 }
+
 
 a {
   text-decoration: none;
@@ -52,7 +58,7 @@ a {
   line-height: 3em;
 }
 
-p.link-cats {
+p.linkcats {
   color: var(--white);
   padding: 0.375em 0 0.375em 0.375em;
   font-size: 0.875em;
@@ -61,33 +67,30 @@ p.link-cats {
 }
 
 .statusbar {
-  display: inline-block;
+  display: flex;
+white-space: nowrap;
   height: 16px;
+  line-height: 16px;
   width: 100%;
   background-color: grey;
   font-size: 0.8em;
-  line-height: 16px;
 padding: 0;
 margin: 0;}
 
 .statusbox {
-  display: inline-block;
   text-align: center;
-  background-color: inherit;
   padding: 0 1em 0 1em;
   color: var(--white);
 }
 
 .mode {
-  background-color: white;
+  background-color: var(--white);
   color: black;
-  width: 24px;
-  padding: 0;
+  padding: 0 0.5em 0 0.5em;
 }
 
 .file {
   background-color: #ff875f;
-  color: white;
 }
 
 .search {
@@ -95,6 +98,11 @@ margin: 0;}
   font:inherit;
   margin:0;
   text-align: left;
+  background-color: inherit;
+flex-grow: 1;
+flex-shrink: 1;
+  min-width: 2px;  
+
 }
 
 .search:focus {
@@ -103,16 +111,8 @@ margin: 0;}
 
 .time {
   background-color: var(--time);
-  float: right;
 }
 
 .solar {
   background-color: var(--solar);
-  float: right;
 }
-
-
-/* selection colors */
-::selection {
-/*  background: var(--white);
-*/}

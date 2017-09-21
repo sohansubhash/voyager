@@ -9,7 +9,7 @@
 <body>
     <div class="holder">
 
-        <p class="link-cats">utility</p>
+        <p class="linkcats">utility</p>
         <ul class="linkbox">
             <li class="linkchild"> <a href="https://github.com/">github</a> </li>
             <li class="linkchild"> <a href="https://mail.google.com/">gmail</a> </li>
@@ -19,7 +19,7 @@
             <li class="linkchild"> <a href="https://drive.google.com/">drive</a> </li>
         </ul>
 
-        <p class="link-cats">distract</p>
+        <p class="linkcats">distract</p>
         <ul class="linkbox">
             <li class="linkchild"> <a href="https://www.reddit.com/">reddit</a> </li>
             <li class="linkchild"> <a href="https://news.ycombinator.com">hackernews</a> </li>
@@ -29,28 +29,140 @@
             <li class="linkchild"> <a href="http://wired.com/">wired</a> </li>
         </ul>
 
-        <p class="link-cats">a/v</p>
+        <p class="linkcats">a/v</p>
         <ul class="linkbox">
-            <li class="linkchild"> <a href="https://play.pocketcasts.com">pocketcasts</a> </li>
-            <li class="linkchild"> <a href="hhttps://soundcloud.com">soundcloud</a> </li>
-            <li class="linkchild"> <a href="https://www.youtube.com">youtube</a> </li>
-            <li class="linkchild"> <a href="https://netflix.com">netflix</a> </li>
-            <li class="linkchild"> <a href="https://play.hbogo.com/">hbogo</a> </li>
+            <li class="linkchild accent1"> <a href="https://play.pocketcasts.com">pocketcasts</a> </li>
+            <li class="linkchild accent1"> <a href="hhttps://soundcloud.com">soundcloud</a> </li>
+            <li class="linkchild accent1"> <a href="https://www.youtube.com">youtube</a> </li>
+            <li class="linkchild accent1"> <a href="https://netflix.com">netflix</a> </li>
+            <li class="linkchild accent1"> <a href="https://play.hbogo.com/">hbogo</a> </li>
         </ul>
 
-        <p class="link-cats">school</p>
+        <p class="linkcats">school</p>
         <ul class="linkbox">
-            <li class="linkchild"> <a href="http://inst.eecs.berkeley.edu/~cs61c/fa17/">cs61c</a> </li>
-            <li class="linkchild"> <a href="http://www.eecs70.org/">cs70</a> </li>
-            <li class="linkchild"> <a href="https://www.gradescope.com/">gradescope</a> </li>
-            <li class="linkchild"> <a href="https://bcourses.berkeley.edu/">bcourses</a> </li>
-            <li class="linkchild"> <a href="https://calcentral.berkeley.edu/dashboard/">calcentral</a> </li>
-            <li class="linkchild"> <a href="https://piazza.com/">piazza</a> </li>
+            <li class="linkchild accent2"> <a href="http://inst.eecs.berkeley.edu/~cs61c/fa17/">cs61c</a> </li>
+            <li class="linkchild accent2"> <a href="http://www.eecs70.org/">cs70</a> </li>
+            <li class="linkchild accent2"> <a href="https://www.gradescope.com/">gradescope</a> </li>
+            <li class="linkchild accent2"> <a href="https://bcourses.berkeley.edu/">bcourses</a> </li>
+            <li class="linkchild accent2"> <a href="https://calcentral.berkeley.edu/dashboard/">calcentral</a> </li>
+            <li class="linkchild accent2"> <a href="https://piazza.com/">piazza</a> </li>
         </ul>
 
         <div class="statusbar">
             <div class="statusbox mode">I</div><div class="statusbox file">index.html</div><input type="text" id="search" class="statusbox search" autofocus placeholder="" onkeypress="return searchKeyPress(event)"></input>
-            <div id="time" class="statusbox time">
+                        <div id="solar" class="statusbox solar">
+                <script>
+                    var dated = new Date();
+                    function display(soldate, soltext) {
+              
+                            document.getElementById("solar").innerHTML = soltext + soldate.getHours() + ":" + soldate.getMinutes();
+                    }
+
+                    var sols = update(dated);
+                    display(sols[0], sols[1]);
+
+                    function update(dated) {
+                        var PI = Math.PI,
+                            sin = Math.sin,
+                            cos = Math.cos,
+                            tan = Math.tan,
+                            asin = Math.asin,
+                            atan = Math.atan2,
+                            acos = Math.acos,
+                            rad = PI / 180,
+                            J0 = 0.0009,
+                            e = rad * 23.4397,
+                            dayMs = 1000 * 60 * 60 * 24,
+                            J1970 = 2440588,
+                            J2000 = 2451545;
+                        lat = 37.8719,
+                            lng = -122.2585;
+
+
+                        function toDays(date) {
+                            return toJulian(date) - J2000;
+                        }
+
+                        function toJulian(date) {
+                            return date.valueOf() / dayMs - 0.5 + J1970;
+                        }
+
+                        function julianCycle(d, lw) {
+                            return Math.round(d - J0 - lw / (2 * PI));
+                        }
+
+                        function approxTransit(Ht, lw, n) {
+                            return J0 + (Ht + lw) / (2 * PI) + n;
+                        }
+
+                        function solarMeanAnomaly(d) {
+                            return rad * (357.5291 + 0.98560028 * d);
+                        }
+
+                        function eclipticLongitude(M) {
+                            var C = rad * (1.9148 * sin(M) + 0.02 * sin(2 * M) + 0.0003 * sin(3 * M)), // equation of center
+                                P = rad * 102.9372; // perihelion of the Earth
+                            return M + C + P + PI;
+                        }
+
+                        function declination(l, b) {
+                            return asin(sin(b) * cos(e) + cos(b) * sin(e) * sin(l));
+                        }
+
+                        function solarTransitJ(ds, M, L) {
+                            return J2000 + ds + 0.0053 * sin(M) - 0.0069 * sin(2 * L);
+                        }
+
+                        function fromJulian(j) {
+                            return new Date((j + 0.5 - J1970) * dayMs);
+                        }
+
+                        function getSetJ(h, lw, phi, dec, n, M, L) {
+
+                            var w = hourAngle(h, phi, dec),
+                                a = approxTransit(w, lw, n);
+                            return solarTransitJ(a, M, L);
+                        }
+
+                        function hourAngle(h, phi, d) {
+                            return acos((sin(h) - sin(phi) * sin(d)) / (cos(phi) * cos(d)));
+                        }
+
+                        var lw = rad * -lng,
+                            phi = rad * lat,
+
+                            d = toDays(dated),
+                            n = julianCycle(d, lw),
+                            ds = approxTransit(0, lw, n),
+
+                            M = solarMeanAnomaly(ds),
+                            L = eclipticLongitude(M),
+                            dec = declination(L, 0),
+
+                            Jnoon = solarTransitJ(ds, M, L),
+
+                            i, len, time, Jset, Jrise;
+
+
+                        // solarNoon: fromJulian(Jnoon),
+                        // nadir: fromJulian(Jnoon - 0.5)
+
+
+                        time = -0.833;
+                        Jset = getSetJ(time * rad, lw, phi, dec, n, M, L);
+                        Jrise = Jnoon - (Jset - Jnoon);
+						var sunrise = fromJulian(Jrise);
+						var sunset = fromJulian(Jset);
+						var solar = sunrise;
+						var soltext = "sunrise: "
+						if(dated > sunrise && dated < sunset){
+							solar = sunset;
+							soltext = "sunset: "
+						}
+                        return [solar, soltext];
+                    }                </script>
+            </div>
+			<div id="time" class="statusbox time">
                 <script>
                     var interval;
 
@@ -82,127 +194,7 @@
                     writeTime();
                 </script>
             </div>
-            <div id="solar" class="statusbox solar">
-                <script>
-                    var date = new Date(),
-                    oldSunset = new Date(localStorage.getItem("sunset")),
-                    oldSunrise = new Date(localStorage.getItem("sunrise"));                    
 
-                    function display(date) {
-                      var newSunset = new Date(localStorage.getItem("sunset")),
-                    newSunrise = new Date(localStorage.getItem("sunrise"));                    
-                    if (date > newSunrise) {
-                      document.getElementById("solar").innerHTML = "sunset: " +  newSunset.getHours() + ":" + newSunset.getMinutes();
-                    } else {
-                      document.getElementById("solar").innerHTML = "sunrise: " +  newSunrise.getHours() + ":" + newSunrise.getMinutes();
-                    }                    
-                  }
-
-                    // if (oldSunset=== null || oldSunrise === null){
-                    //   update(date);
-                    // } else if (oldSunset < date){
-                    //   update(date )
-                    // }
-                                        //   update(date )
-
-                    display(date);
-                    function update(date){
-                    var PI = Math.PI,
-                        sin = Math.sin,
-                        cos = Math.cos,
-                        tan = Math.tan,
-                        asin = Math.asin,
-                        atan = Math.atan2,
-                        acos = Math.acos,
-                        rad = PI / 180,
-                        J0 = 0.0009,
-                        e = rad * 23.4397,
-                        dayMs = 1000 * 60 * 60 * 24,
-                        J1970 = 2440588,
-                        J2000 = 2451545;
-                        lat = 37.8719,
-                        lng = -122.2585;
-
-
-                    function toDays(date) {
-                        return toJulian(date) - J2000;
-                    }
-
-                    function toJulian(date) {
-                        return date.valueOf() / dayMs - 0.5 + J1970;
-                    }
-
-                    function julianCycle(d, lw) {
-                        return Math.round(d - J0 - lw / (2 * PI));
-                    }
-
-                    function approxTransit(Ht, lw, n) {
-                        return J0 + (Ht + lw) / (2 * PI) + n;
-                    }
-
-                    function solarMeanAnomaly(d) {
-                        return rad * (357.5291 + 0.98560028 * d);
-                    }
-
-                    function eclipticLongitude(M) {
-                        var C = rad * (1.9148 * sin(M) + 0.02 * sin(2 * M) + 0.0003 * sin(3 * M)), // equation of center
-                            P = rad * 102.9372; // perihelion of the Earth
-                        return M + C + P + PI;
-                    }
-
-                    function declination(l, b) {
-                        return asin(sin(b) * cos(e) + cos(b) * sin(e) * sin(l));
-                    }
-
-                    function solarTransitJ(ds, M, L) {
-                        return J2000 + ds + 0.0053 * sin(M) - 0.0069 * sin(2 * L);
-                    }
-
-                    function fromJulian(j) {
-                        return new Date((j + 0.5 - J1970) * dayMs);
-                    }
-
-                    function getSetJ(h, lw, phi, dec, n, M, L) {
-
-                        var w = hourAngle(h, phi, dec),
-                            a = approxTransit(w, lw, n);
-                        return solarTransitJ(a, M, L);
-                    }
-
-                    function hourAngle(h, phi, d) {
-                        return acos((sin(h) - sin(phi) * sin(d)) / (cos(phi) * cos(d)));
-                    }
-
-                    var lw = rad * -lng,
-                        phi = rad * lat,
-
-                        d = toDays(date),
-                        n = julianCycle(d, lw),
-                        ds = approxTransit(0, lw, n),
-
-                        M = solarMeanAnomaly(ds),
-                        L = eclipticLongitude(M),
-                        dec = declination(L, 0),
-
-                        Jnoon = solarTransitJ(ds, M, L),
-
-                        i, len, time, Jset, Jrise;
-
-
-                    // solarNoon: fromJulian(Jnoon),
-                    // nadir: fromJulian(Jnoon - 0.5)
-
-
-                    time = -0.833;
-                    Jset = getSetJ(time * rad, lw, phi, dec, n, M, L);
-                    Jrise = Jnoon - (Jset - Jnoon);
-
-                    localStorage.setItem("sunrise", fromJulian(Jrise).dateString());
-                    localStorage.setItem("sunset", fromJulian(Jset).dateString());
-                                      }
-
-                </script>
-            </div>
         </div>
 
     </div>
