@@ -1,21 +1,21 @@
 :root {
   --white: #fff;
   --black: #051519;
-  --accent: #ff5b5b;
-  --accent2: #92d3a2;
+  --accent0: #62B6CB;
+  --accent1: #ff5b5b;
+  --accent2: #495867;
+  --accent3: #92d3a2;
   --bckgrnd: bisque;
   --solar: #00a896;
   --time: #028090;
 }
 
 
-html {
-    font-family: 'Roboto Slab', monospace;
-    background-color: var(--bckgrnd);
-}
-
-
 body {
+font-family: courier, monospace;
+
+    background-color: var(--bckgrnd);
+	
       }
 
 .holder{
@@ -42,14 +42,21 @@ body {
   margin: 0.3em;
 }
 
+.accent0:hover {
+  background-color: var(--accent0);
+}
+
 .accent1:hover {
-  background-color: var(--accent);
+  background-color: var(--accent1);
 }
 
 .accent2:hover {
   background-color: var(--accent2);
 }
 
+.accent3:hover {
+  background-color: var(--accent3);
+}
 
 a {
   text-decoration: none;
@@ -58,7 +65,7 @@ a {
   line-height: 3em;
 }
 
-p.linkcats {
+.linkcats {
   color: var(--white);
   padding: 0.375em 0 0.375em 0.375em;
   font-size: 0.875em;
@@ -69,13 +76,12 @@ p.linkcats {
 .statusbar {
   display: flex;
 white-space: nowrap;
-  height: 16px;
-  line-height: 16px;
   width: 100%;
   background-color: grey;
   font-size: 0.8em;
 padding: 0;
-margin: 0;}
+margin: 0;
+}
 
 .statusbox {
   text-align: center;
