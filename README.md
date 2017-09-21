@@ -1,4 +1,5 @@
 # home
-🏡 is where the browser starts
+🏡 is where the browser starts.
 
-A super lightweight selfcontained startpage.
+A super lightweight and self-contained startpage.
+![Screenshot](screenshot.png?raw=true "Screenshot")
