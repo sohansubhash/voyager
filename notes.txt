@@ -1,0 +1,2 @@
+1. add countdown of days in year
+2. update screenshot without 'use the terminal tool'
