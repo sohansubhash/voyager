@@ -1,13 +1,17 @@
 :root {
-  --white: #fff;
-  --black: #051519;
-  --accent0: #62B6CB;
-  --accent1: #ff5b5b;
-  --accent2: #495867;
-  --accent3: #92d3a2;
-  --bckgrnd: bisque;
-  --solar: #00a896;
-  --time: #028090;
+  --text: #839496;
+  --black: #839496;
+  --accent0: #b58900;
+  --accent1: #cb4b16;
+  --accent2: #268bd2;    
+  --accent3: #2aa198;
+  --bckgrnd: #fdf6e3;
+  --holder: #eee8d5;
+  --solar: #268bd2;
+  --time: #2aa198;
+  --file: #cb4b16;
+  --mode: #b58900;
+  
 }
 
 
@@ -21,7 +25,7 @@ font-family: courier, monospace;
 .holder{
   margin: 4em auto auto auto;
   padding: 2em 1em 1em 1em;
-  background: var(--black);
+  background: var(--holder);
   /*box-shadow: 0 4px 0.625em 0 rgba(0,0,0,0.4); */
   max-width: 40em;
   min-width: 25em;  
@@ -35,7 +39,7 @@ font-family: courier, monospace;
 }
 
 .linkchild {
-  color: var(--white);
+  color: var(--text);
   transition: ease-in-out 0.05s;
   text-align: center;
   font-size: 0.8em;
@@ -44,18 +48,24 @@ font-family: courier, monospace;
 
 .accent0:hover {
   background-color: var(--accent0);
+  color: var(--bckgrnd);  
 }
 
 .accent1:hover {
   background-color: var(--accent1);
+  color: var(--bckgrnd);    
 }
 
 .accent2:hover {
   background-color: var(--accent2);
+  color: var(--bckgrnd);  
+  
 }
 
 .accent3:hover {
   background-color: var(--accent3);
+  color: var(--bckgrnd);  
+  
 }
 
 a {
@@ -66,7 +76,7 @@ a {
 }
 
 .linkcats {
-  color: var(--white);
+  color: var(--text);
   padding: 0.375em 0 0.375em 0.375em;
   font-size: 0.875em;
   font-weight: normal;
@@ -77,7 +87,7 @@ a {
   display: flex;
 white-space: nowrap;
   width: 100%;
-  background-color: grey;
+  background-color: var(--bckgrnd);
   font-size: 0.8em;
 padding: 0;
 margin: 0;
@@ -86,17 +96,16 @@ margin: 0;
 .statusbox {
   text-align: center;
   padding: 0 1em 0 1em;
-  color: var(--white);
+  color: var(--bckgrnd);
 }
 
 .mode {
-  background-color: var(--white);
-  color: black;
+  background-color: var(--mode);
   padding: 0 0.5em 0 0.5em;
 }
 
 .file {
-  background-color: #ff875f;
+  background-color: var(--file);
 }
 
 .search {
@@ -108,7 +117,7 @@ margin: 0;
 flex-grow: 1;
 flex-shrink: 1;
   min-width: 2px;  
-
+  color: var(--text);
 }
 
 .search:focus {
