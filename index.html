@@ -45,7 +45,7 @@
 
     <div class="succulent" id="daysleft" title="Days left in the week : month : year"></div>
     <div class="succulent" id="solar" title="sunrise/sunset time"></div>
-    <div class="succulent" id="leafsearch" title="sunrise/sunset time">
+    <div class="succulent" id="leafsearch" title="search :)">
       <form autocomplete="off" id="js-search-form" >
         <input autofocus="" id="js-search-input" type="search">
       </form>
@@ -68,12 +68,11 @@ var sunrise = sols.sunrise;
 var sunset = sols.sunset;
 
 var soldate = sunrise;
-var soltext = "sunrise: ";
+var soltext = "sunrise ";
 if(today > sunrise && today < sunset){
           soldate = sunset;
-           soltext = "sunset: " ;
+           soltext = "sunset " ;
 }
-console.log(diffweek, diffmonth, diffyear);
 
 function nextMonth(date) {
     return new Date(date.getFullYear(), date.getMonth() + 1, 0);
@@ -93,24 +92,13 @@ function display_daysleft(week, month, year) {
 
 display_solar(soldate, soltext);
 display_daysleft(diffweek, diffmonth, diffyear);
-//  bcourses : b
-// calcentral cs161 cs162 
-// drive : d
-// github gmail gradescope 
-// hackernews hbogo 
-// netflix 
-// piazza pinboard producthunt protonmail 
-// reddit 
-// twitter twitch 
-// theverge vimeo 
-// wired 
-// youtube
+
    var config = {
      commands: [
-//utility
+          //utility
          { key: 'd', name: 'Drive', url: 'https://drive.google.com/drive', search: '/search?q=' },
          { key: 'gh', name: 'GitHub', url: 'https://github.com', search: '/search?q=' },
-         { key: 'g', name: 'Gmail', url: 'https://mail.google.com', search: '/#search/text=' },
+         { key: 'g', name: 'Gmail', url: 'https://mail.google.com', search: '/mail/u/0/#search/' },
          { key: 'pm', name: 'Protonmail', url: 'https://drive.google.com/drive', search: '/search?q=' },
          { key: 'p', name: 'Pinboard', url: 'https://pinboard.in/', search: '/search/u:ssbash/?query=' },
        //distract
@@ -119,13 +107,13 @@ display_daysleft(diffweek, diffmonth, diffyear);
          { key: 'r', name: 'Reddit', url: 'https://www.reddit.com', search: '/search?q=' },
          { key: 't', name: 'Twitter', url: 'https://twitter.com', search: '/search?q=' },
          { key: 'v', name: 'Verge', url: 'https://www.theverge.com', search: '/search?q=' },
-         { key: 'w', name: 'Wired', url: 'https://wired.com', search: '/search?q=' },
+         { key: 'w', name: 'Wired', url: 'https://wired.com', search: '/search/?q=' },
        //video
          { key: 'n', name: 'Netflix', url: 'https://netflix.com', search: '/search?q=' },
          { key: 'tw', name: 'Twitch', url: 'https://www.twitch.tv/directory/following' },
          { key: 'y', name: 'YouTube', url: 'https://www.youtube.com', search: '/results?search_query=' },
-         { key: 'vm', name: 'Vimeo', url: 'https://vimeo.com', search: '/browse-movies/' },
-         { key: 'hbo', name: 'HBOGO', url: 'play.hbogo.com', search: '/browse-movies/' },
+         { key: 'vm', name: 'Vimeo', url: 'https://vimeo.com', search: '/search?q=' },
+         { key: 'hbo', name: 'HBOGO', url: 'play.hbogo.com' },
          //school
          { key: 'pi', name: 'Piazza', url: 'https://piazza.com', search: '/search?q=' },
          { key: 'gs', name: 'Gradescope', url: 'https://www.gradescope.com' },
@@ -145,34 +133,34 @@ display_daysleft(diffweek, diffmonth, diffyear);
     var searchForm =  document.getElementById("js-search-form");
     var searchInput =  document.getElementById("js-search-input");
 
-searchForm.addEventListener('submit', function(event){
-            event.preventDefault();
-            var q = searchInput.value.trim();
-        var qSplit = q.split(config.searchDelimiter);
-        var qIsUrl = q.match(new RegExp(urlRegex));
-        var redirect = '';
+    searchForm.addEventListener('submit', function(event){
+                event.preventDefault();
+                var q = searchInput.value.trim();
+            var qSplit = q.split(config.searchDelimiter);
+            var qIsUrl = q.match(new RegExp(urlRegex));
+            var redirect = '';
 
-        if (qIsUrl) redirect = q;
-        else redirect = config.defaultSearch + encodeURIComponent(q);
+            if (qIsUrl) redirect = q;
+            else redirect = config.defaultSearch + encodeURIComponent(q);
 
-        config.commands.forEach(function(command) {
-            if (qSplit[0] === command.key) {
+            config.commands.forEach(function(command) {
+                if (qSplit[0] === command.key) {
 
-              if (qSplit[1] && command.search) {
+                  if (qSplit[1] && command.search) {
 
-                qSplit.shift();
-                var search = encodeURIComponent(qSplit[0].trim());
-                redirect = command.url + command.search + search;
-              } 
-              else {
-                redirect = command.url;
-              }
-            }
+                    qSplit.shift();
+                    var search = encodeURIComponent(qSplit[0].trim());
+                    redirect = command.url + command.search + search;
+                  } 
+                  else {
+                    redirect = command.url;
+                  }
+                }
 
-          });
+              });
 
-        window.location.href = redirect;
-   } ,  false);
+            window.location.href = redirect;
+       } ,  false);
     </script>
 </body>
 
