@@ -1,218 +1,179 @@
-
+<!DOCTYPE html>
 <html>
-
 <head>
-    <title>~</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-<link href="https://fonts.googleapis.com/css?family=Space+Mono:400,700" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Fira+Mono" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
-
+  <title>~</title>
+  <meta charset="utf-8">
+  <link href="style.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Space+Mono:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Fira+Mono" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
+  <script src="SunCalc.js" type="text/javascript">
+  </script>
 </head>
-
 <body>
-<!--         <div class="grid-page">
-            <div class="header">
-                <div>HOME</div>
-                <div>SEARCH</div>
-                <div>LOGOUT</div>
-            </div>
-            <div class="menu">MENU</div>
-            <div class="content">CONTENT</div>
-            <div class="footer">FOOTER</div>
-        </div> -->
+  <div class="linkgarden">
+    <div class="linklabel">  &gt; utility </div>
+    <a class="row0" href="https://mail.google.com/"><div class="linkplant">  gmail</div></a> 
+    <a class="row0" href="https://mail.protonmail.com/login"><div class="linkplant">  protonmail </div></a>
+    <a class="row0" href="https://pinboard.in/u:ssbash/"><div class="linkplant">  pinboard </div></a>
+    <a class="row0" href="https://github.com/"><div class="linkplant">  github </div></a>
+    <a class="row0" href="https://drive.google.com/"><div class="linkplant">  drive  </div></a>
 
-    <div class="holder">
+    <div class="linklabel">  &gt; distract </div>
+    <a class="row1" href="https://www.reddit.com/"><div class="linkplant">  reddit </div></a> 
+    <a class="row1" href="https://news.ycombinator.com/"><div class="linkplant">  hackernews </div></a> 
+    <a class="row1" href="http://producthunt.com/"><div class="linkplant">  producthunt </div></a> 
+    <a class="row1" href="https://twitter.com/"><div class="linkplant">  twitter </div></a> 
+    <a class="row1" href="http://www.theverge.com/"><div class="linkplant">  theverge </div></a> 
+    <a class="row1" href="http://wired.com/"><div class="linkplant">  wired </div></a>
+    
+    <div class="linklabel">  &gt; video </div>
+    <a class="row2" href="https://www.youtube.com"><div class="linkplant">  youtube </div></a> 
+    <a class="row2" href="https:///www.twitch.tv"><div class="linkplant">  twitch </div></a> 
+    <a class="row2" href="https://vimeo.com"><div class="linkplant">  vimeo </div></a> 
+    <a class="row2" href="https://netflix.com"><div class="linkplant">  netflix </div></a> 
+    <a class="row2" href="https://play.hbogo.com/"><div class="linkplant">  hbogo </div></a>
 
-        <p class="linkcats">utility</p>
-        <ul class="linkbox">
-            <li class="linkchild accent0"> <a href="https://github.com/">github</a> </li>
-            <li class="linkchild accent0"> <a href="https://mail.google.com/">gmail</a> </li>
-            <li class="linkchild accent0"> <a href="https://www.messenger.com/">messenger</a> </li>
-            <li class="linkchild accent0"> <a href="https://getpocket.com/a/queue/">pocket</a> </li>
-            <li class="linkchild accent0"> <a href="https://www.dropbox.com/login/">dropbox</a> </li>
-            <li class="linkchild accent0"> <a href="https://drive.google.com/">drive</a> </li>
-        </ul>
+    <div class="linklabel">  &gt; school </div>
+    <a class="row3" href="http://inst.eecs.berkeley.edu/~cs161/sp18/"><div class="linkplant">  cs161 </div></a> 
+    <a class="row3" href="https://cs162.eecs.berkeley.edu/"><div class="linkplant">  cs162 </div></a> 
+    <a class="row3" href="https://www.gradescope.com/"><div class="linkplant">  gradescope </div></a>
+    <a class="row3" href="https://bcourses.berkeley.edu/"><div class="linkplant">  bcourses </div></a> 
+    <a class="row3" href="https://calcentral.berkeley.edu/dashboard/"><div class="linkplant">  calcentral </div></a> 
+    <a class="row3" href="https://piazza.com/"><div class="linkplant">  piazza </div></a>
 
-        <p class="linkcats">distract</p>
-        <ul class="linkbox">
-            <li class="linkchild accent1"> <a href="https://www.reddit.com/">reddit</a> </li>
-            <li class="linkchild accent1"> <a href="https://news.ycombinator.com">hackernews</a> </li>
-            <li class="linkchild accent1"> <a href="https://twitter.com/">twitter</a> </li>
-            <li class="linkchild accent1"> <a href="https://facebook.com/">facebook</a> </li>
-            <li class="linkchild accent1"> <a href="http://www.theverge.com/">theverge</a> </li>
-            <li class="linkchild accent1"> <a href="http://wired.com/">wired</a> </li>
-        </ul>
-
-        <p class="linkcats">a/v</p>
-        <ul class="linkbox">
-            <li class="linkchild accent2"> <a href="https://play.pocketcasts.com">pocketcasts</a> </li>
-            <li class="linkchild accent2"> <a href="https://soundcloud.com">soundcloud</a> </li>
-            <li class="linkchild accent2"> <a href="https://www.youtube.com">youtube</a> </li>
-            <li class="linkchild accent2"> <a href="https://netflix.com">netflix</a> </li>
-            <li class="linkchild accent2"> <a href="https://play.hbogo.com/">hbogo</a> </li>
-        </ul>
-
-        <p class="linkcats">school</p>
-        <ul class="linkbox">
-            <li class="linkchild accent3"> <a href="http://inst.eecs.berkeley.edu/~cs161/sp18/">cs161</a> </li>
-            <li class="linkchild accent3"> <a href="https://cs162.eecs.berkeley.edu/">cs162</a> </li>
-            <li class="linkchild accent3"> <a href="https://www.gradescope.com/">gradescope</a> </li>
-            <li class="linkchild accent3"> <a href="https://bcourses.berkeley.edu/">bcourses</a> </li>
-            <li class="linkchild accent3"> <a href="https://calcentral.berkeley.edu/dashboard/">calcentral</a> </li>
-            <li class="linkchild accent3"> <a href="https://piazza.com/">piazza</a> </li>
-        </ul>
-
-        <div class="statusbar">
-            <div class="statusbox mode">I</div><div class="statusbox file">home.c</div><input type="text" id="search" class="statusbox search" autofocus placeholder="" onkeypress="return searchKeyPress(event)"></input>
-                        <div id="solar" class="statusbox solar">
-                <script>
-                    var dated = new Date();
-                    function display(soldate, soltext) {
-              
-                            document.getElementById("solar").innerHTML = soltext + soldate.getHours() + ":" + soldate.getMinutes();
-                    }
-
-                    var sols = update(dated);
-                    display(sols[0], sols[1]);
-
-                    function update(dated) {
-                        var PI = Math.PI,
-                            sin = Math.sin,
-                            cos = Math.cos,
-                            tan = Math.tan,
-                            asin = Math.asin,
-                            atan = Math.atan2,
-                            acos = Math.acos,
-                            rad = PI / 180,
-                            J0 = 0.0009,
-                            e = rad * 23.4397,
-                            dayMs = 1000 * 60 * 60 * 24,
-                            J1970 = 2440588,
-                            J2000 = 2451545;
-                        lat = 37.8719,
-                            lng = -122.2585;
-
-
-                        function toDays(date) {
-                            return toJulian(date) - J2000;
-                        }
-
-                        function toJulian(date) {
-                            return date.valueOf() / dayMs - 0.5 + J1970;
-                        }
-
-                        function julianCycle(d, lw) {
-                            return Math.round(d - J0 - lw / (2 * PI));
-                        }
-
-                        function approxTransit(Ht, lw, n) {
-                            return J0 + (Ht + lw) / (2 * PI) + n;
-                        }
-
-                        function solarMeanAnomaly(d) {
-                            return rad * (357.5291 + 0.98560028 * d);
-                        }
-
-                        function eclipticLongitude(M) {
-                            var C = rad * (1.9148 * sin(M) + 0.02 * sin(2 * M) + 0.0003 * sin(3 * M)), // equation of center
-                                P = rad * 102.9372; // perihelion of the Earth
-                            return M + C + P + PI;
-                        }
-
-                        function declination(l, b) {
-                            return asin(sin(b) * cos(e) + cos(b) * sin(e) * sin(l));
-                        }
-
-                        function solarTransitJ(ds, M, L) {
-                            return J2000 + ds + 0.0053 * sin(M) - 0.0069 * sin(2 * L);
-                        }
-
-                        function fromJulian(j) {
-                            return new Date((j + 0.5 - J1970) * dayMs);
-                        }
-
-                        function getSetJ(h, lw, phi, dec, n, M, L) {
-
-                            var w = hourAngle(h, phi, dec),
-                                a = approxTransit(w, lw, n);
-                            return solarTransitJ(a, M, L);
-                        }
-
-                        function hourAngle(h, phi, d) {
-                            return acos((sin(h) - sin(phi) * sin(d)) / (cos(phi) * cos(d)));
-                        }
-
-                        var lw = rad * -lng,
-                            phi = rad * lat,
-
-                            d = toDays(dated),
-                            n = julianCycle(d, lw),
-                            ds = approxTransit(0, lw, n),
-
-                            M = solarMeanAnomaly(ds),
-                            L = eclipticLongitude(M),
-                            dec = declination(L, 0),
-
-                            Jnoon = solarTransitJ(ds, M, L),
-
-                            i, len, time, Jset, Jrise;
-
-
-                        // solarNoon: fromJulian(Jnoon),
-                        // nadir: fromJulian(Jnoon - 0.5)
-
-
-                        time = -0.833;
-                        Jset = getSetJ(time * rad, lw, phi, dec, n, M, L);
-                        Jrise = Jnoon - (Jset - Jnoon);
-						var sunrise = fromJulian(Jrise);
-						var sunset = fromJulian(Jset);
-						var solar = sunrise;
-						var soltext = "sunrise: "
-						if(dated > sunrise && dated < sunset){
-							solar = sunset;
-							soltext = "sunset: "
-						}
-                        return [solar, soltext];
-                    }                </script>
-            </div>
-			<div id="time" class="statusbox time">
-                <script>
-                    var interval;
-
-                    function updateTime() {
-                        interval = setInterval(writeTime, 1000);
-                    }
-
-                    function writeTime() {
-                        var now = new Date();
-
-                        function hours() {
-                            if (now.getHours().toString().length < 2) {
-                                return "0" + now.getHours();
-                            } else {
-                                return now.getHours();
-                            }
-                        }
-
-                        function mins() {
-                            if (now.getMinutes().toString().length < 2) {
-                                return "0" + now.getMinutes();
-                            } else {
-                                return now.getMinutes();
-                            }
-                        }
-                        document.getElementById("time").innerHTML = hours() + ":" + mins();
-                    }
-                    updateTime();
-                    writeTime();
-                </script>
-            </div>
-
-        </div>
-
+    <div class="succulent" id="daysleft" title="Days left in the week : month : year"></div>
+    <div class="succulent" id="solar" title="sunrise/sunset time"></div>
+    <div class="succulent" id="leafsearch" title="sunrise/sunset time">
+      <form autocomplete="off" id="js-search-form" >
+        <input autofocus="" id="js-search-input" type="search">
+      </form>
     </div>
-    <script type="text/javascript" src="script.js"></script>
-    </body
+  </div>
+
+  <script type="text/javascript">
+      const DAY = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+const latitude = 37.8719; // Berkeley Lat/Long
+const longitude = -122.2585;
+
+var today = new Date();
+var sols = SunCalc.getTimes(today,  latitude, longitude)
+
+var diffweek = Math.round(Math.abs((6 - today.getDay()))); //excuding today
+var diffmonth = Math.round(Math.abs((today.getTime() - nextMonth(today).getTime()) / (DAY)));
+var diffyear = Math.round(Math.abs((today.getTime() - nextYear(today).getTime()) / (DAY)));
+
+var sunrise = sols.sunrise;
+var sunset = sols.sunset;
+
+var soldate = sunrise;
+var soltext = "sunrise: ";
+if(today > sunrise && today < sunset){
+          soldate = sunset;
+           soltext = "sunset: " ;
+}
+console.log(diffweek, diffmonth, diffyear);
+
+function nextMonth(date) {
+    return new Date(date.getFullYear(), date.getMonth() + 1, 0);
+}
+
+function nextYear(date) {
+    return new Date(date.getFullYear() + 1, 0, 0);
+}
+
+function display_solar(date, text) {
+    document.getElementById("solar").innerHTML = text + date.getHours() + ":" + date.getMinutes();
+}
+
+function display_daysleft(week, month, year) {
+    document.getElementById("daysleft").innerHTML = week + " : " + month + " : " + year;
+}
+
+display_solar(soldate, soltext);
+display_daysleft(diffweek, diffmonth, diffyear);
+//  bcourses : b
+// calcentral cs161 cs162 
+// drive : d
+// github gmail gradescope 
+// hackernews hbogo 
+// netflix 
+// piazza pinboard producthunt protonmail 
+// reddit 
+// twitter twitch 
+// theverge vimeo 
+// wired 
+// youtube
+   var config = {
+     commands: [
+//utility
+         { key: 'd', name: 'Drive', url: 'https://drive.google.com/drive', search: '/search?q=' },
+         { key: 'gh', name: 'GitHub', url: 'https://github.com', search: '/search?q=' },
+         { key: 'g', name: 'Gmail', url: 'https://mail.google.com', search: '/#search/text=' },
+         { key: 'pm', name: 'Protonmail', url: 'https://drive.google.com/drive', search: '/search?q=' },
+         { key: 'p', name: 'Pinboard', url: 'https://pinboard.in/', search: '/search/u:ssbash/?query=' },
+       //distract
+         { key: 'h', name: 'Hacker News', url: 'https://hn.algolia.com', search: '/?query=' },
+         { key: 'ph', name: 'Product Hunt', url: 'https://www.producthunt.com', search: '/search?q=' },
+         { key: 'r', name: 'Reddit', url: 'https://www.reddit.com', search: '/search?q=' },
+         { key: 't', name: 'Twitter', url: 'https://twitter.com', search: '/search?q=' },
+         { key: 'v', name: 'Verge', url: 'https://www.theverge.com', search: '/search?q=' },
+         { key: 'w', name: 'Wired', url: 'https://wired.com', search: '/search?q=' },
+       //video
+         { key: 'n', name: 'Netflix', url: 'https://netflix.com', search: '/search?q=' },
+         { key: 'tw', name: 'Twitch', url: 'https://www.twitch.tv/directory/following' },
+         { key: 'y', name: 'YouTube', url: 'https://www.youtube.com', search: '/results?search_query=' },
+         { key: 'vm', name: 'Vimeo', url: 'https://vimeo.com', search: '/browse-movies/' },
+         { key: 'hbo', name: 'HBOGO', url: 'play.hbogo.com', search: '/browse-movies/' },
+         //school
+         { key: 'pi', name: 'Piazza', url: 'https://piazza.com', search: '/search?q=' },
+         { key: 'gs', name: 'Gradescope', url: 'https://www.gradescope.com' },
+         { key: 'b', name: 'Bcourses', url: 'https://bcourses.berkeley.edu'},
+         { key: 'c', name: 'CalCentral', url: 'https://calcentral.berkeley.edu/dashboard/'},
+     ],
+
+     // if none of the keys are matched, this is used for searching
+     defaultSearch: 'https://www.google.com/search?q=',
+
+     // the delimiter between the key and your search query
+     // e.g. to search GitHub for potatoes you'd type "g:potatoes"
+     searchDelimiter: ':'
+   };
+
+     var urlRegex = /(\b(https?|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/i;
+    var searchForm =  document.getElementById("js-search-form");
+    var searchInput =  document.getElementById("js-search-input");
+
+searchForm.addEventListener('submit', function(event){
+            event.preventDefault();
+            var q = searchInput.value.trim();
+        var qSplit = q.split(config.searchDelimiter);
+        var qIsUrl = q.match(new RegExp(urlRegex));
+        var redirect = '';
+
+        if (qIsUrl) redirect = q;
+        else redirect = config.defaultSearch + encodeURIComponent(q);
+
+        config.commands.forEach(function(command) {
+            if (qSplit[0] === command.key) {
+
+              if (qSplit[1] && command.search) {
+
+                qSplit.shift();
+                var search = encodeURIComponent(qSplit[0].trim());
+                redirect = command.url + command.search + search;
+              } 
+              else {
+                redirect = command.url;
+              }
+            }
+
+          });
+
+        window.location.href = redirect;
+   } ,  false);
+    </script>
+</body>
+
+</html>
