@@ -10,12 +10,12 @@ A super lightweight and self-contained startpage.
 
 ![Screenshot](screenshot.png?raw=true "Screenshot")
 
-## command examples
+## search command examples
 ```
-y              # takes you to youtube.com
-t: amazon      # searches Twitter for Amazon
-gh: twitter     # searches GitHub for Twitter
-r: python        # searches Reddit for python
+y		# takes you to youtube.com
+y/trending	# takes you to youtube.com/trending
+gh: twitter	# searches GitHub for Twitter
+r/r/unix	# takes you to reddit.com/r/unix
 ```
 
 ## list of keys
