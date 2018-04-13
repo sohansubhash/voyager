@@ -8,7 +8,7 @@
   --negative: #fdf6e3;
 
   /*row colors*/  
-  --row0: #b58900;
+  --row0: #859900;
   --row1: #cb4b16;
   --row2: #268bd2;    
   --row3: #2aa198;
@@ -19,13 +19,19 @@
   --solar: #657b83;
 }
 
+
+@font-face {
+font-family: 'Apercu';
+src: url('fonts/apercu-mono-regular.ttf');  	
+}
+
 body {
-font-family: courier, monospace;
+font-family:'Apercu', monospace;
 background-color: var(--bckgrnd);
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0; height: 100vh; overflow: hidden
+  margin: 0; height: 100vh; overflow: hidden;
 }
 
 a {
@@ -69,7 +75,7 @@ a {
   text-align: center;
   font-size: 1em;
   padding: 0 0.25em 0 0.25em;
-  transition: ease-in-out 0.1s;
+  transition: ease-in-out 0.085s;
 }
 
 .linklabel {
