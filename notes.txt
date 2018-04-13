@@ -1,5 +1,4 @@
 1. make this stuff reponsive
-2. add padding to linkplants
 3. figure out font stuff
 4. fix form input stuff with safari
 5. figure out the entire space and width

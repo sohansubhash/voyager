@@ -13,7 +13,7 @@
   --row2: #268bd2;    
   --row3: #2aa198;
 
-/*succulent colors*/  
+  /*succulent colors*/  
   --daysleft: #657b83;
   --leafsearch: #073642;
   --solar: #657b83;
@@ -22,16 +22,15 @@
 body {
 font-family: courier, monospace;
 background-color: var(--bckgrnd);
-  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  scroll:"no";
-  style:overflow: hidden;
+  margin: 0; height: 100vh; overflow: hidden
 }
 
 a {
       text-decoration: none;
+	  
 }
 
 
@@ -45,51 +44,50 @@ a {
 
   input {
   border: none;
-  font:inherit;
-  margin:0;
+  padding: 0;
   text-align: left;
   background-color: inherit;
   color: inherit;
+  font:inherit;
+  line-height: 1em;
+  
   }
-
 
 /*This our grid container for our links*/
 .linkgarden {
   background: var(--linkgarden);
-  padding: 2em;
-  width:800;
-
+  padding: 2.5em;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: 20px 40px 20px 40px 20px 40px 20px 40px 40px;
-  grid-gap: 2rem;
+  grid-template-rows: repeat(4, 1em 2.5em) 2.5em;
+  grid-gap: 2.5em;
 }
 
 .linkplant{
   color: inherit;
-  transition: ease-in-out 0.1s;
+  line-height: 2.5em;
   text-align: center;
-  font-size: 0.8em;
-  line-height: 40px;
+  font-size: 1em;
+  padding: 0 0.25em 0 0.25em;
+  transition: ease-in-out 0.1s;
 }
 
 .linklabel {
   color: var(--text);
-  font-size: 0.875em;
+  font-size: 1em;
   font-weight: normal;
   margin: 0;
   grid-column: 1 / 1;
-  line-height: 20px;
-
+  line-height: 1em;
 }
 
 .succulent{
-  font-size: 0.875em;
+  font-size: 1em;
   font-weight: normal;
   margin: 0;
-  grid-row: 9  / 9; 
+  grid-row: 9 / 9; 
   text-align: center;
-  line-height: 40px;
+  line-height: 2.5em;
   color: var(--negative);
 }
 
