@@ -39,4 +39,4 @@ w: wired
 ```
 #### Contributions
 
-This project is heavily inspired by Cade Scroggins' excellent [tilde](https://github.com/cadejscroggins/tilde). I also use SunCalc.js for calculating sunrise/sunset times.
+This project is heavily inspired by Cade Scroggins' excellent [tilde](https://github.com/cadejscroggins/tilde). I also use [SunCalc](https://github.com/mourner/suncalc) for calculating sunrise/sunset times.
