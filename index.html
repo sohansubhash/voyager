@@ -46,8 +46,8 @@
     <div class="succulent" id="daysleft" title="Days left in the week : month : year"></div>
     <div class="succulent" id="solar" title="sunrise/sunset time"></div>
     <div class="succulent" id="leafsearch" title="search :)">
-      <form autocomplete="off" id="js-search-form" >
-        <input autofocus="" id="js-search-input" type="search">
+      <form autocomplete="off" id="search-form" >
+        <input autofocus="" id="search-input" type="text">
       </form>
     </div>
   </div>
@@ -87,13 +87,13 @@ function display_solar(date, text) {
 }
 
 function display_daysleft(week, month, year) {
-    document.getElementById("daysleft").innerHTML = week + " : " + month + " : " + year;
+    document.getElementById("daysleft").innerHTML = week + " &#9679; " + month + " &#9679; " + year;
 }
 
 display_solar(soldate, soltext);
 display_daysleft(diffweek, diffmonth, diffyear);
 
-   var config = {
+   const CONFIG = {
      commands: [
           //utility
          { key: 'd', name: 'Drive', url: 'https://drive.google.com/drive', search: '/search?q=' },
@@ -124,43 +124,87 @@ display_daysleft(diffweek, diffmonth, diffyear);
      // if none of the keys are matched, this is used for searching
      defaultSearch: 'https://www.google.com/search?q=',
 
-     // the delimiter between the key and your search query
-     // e.g. to search GitHub for potatoes you'd type "g:potatoes"
-     searchDelimiter: ':'
+    // the delimiter between the key and your search query.
+    // e.g. to search GitHub for potatoes you'd type "g:potatoes".
+    searchDelimiter: ':',
+
+    // the delimiter between the key and a path.
+    // e.g. type "r/r/unixporn" to go to "reddit.com/r/unixporn".
+    pathDelimiter: '/',
+
+    // used for determining when to redirect directly to a url.
+    urlRegex: /^(?:(http|https)?:\/\/)?(?:[\w-]+\.)+([a-z]|[A-Z]|[0-9]){2,6}/i,
+
+    // if "urlRegex" matches but this doesn't, "http://" will be
+    // prepended to the beginning of the query before redirecting.
+    protocolRegex: /^[a-zA-Z]+:\/\//i
    };
 
-     var urlRegex = /(\b(https?|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/i;
-    var searchForm =  document.getElementById("js-search-form");
-    var searchInput =  document.getElementById("js-search-input");
+
+    var searchForm =  document.getElementById("search-form");
+    var searchInput =  document.getElementById("search-input");
 
     searchForm.addEventListener('submit', function(event){
-                event.preventDefault();
-                var q = searchInput.value.trim();
-            var qSplit = q.split(config.searchDelimiter);
-            var qIsUrl = q.match(new RegExp(urlRegex));
-            var redirect = '';
-
-            if (qIsUrl) redirect = q;
-            else redirect = config.defaultSearch + encodeURIComponent(q);
-
-            config.commands.forEach(function(command) {
-                if (qSplit[0] === command.key) {
-
-                  if (qSplit[1] && command.search) {
-
-                    qSplit.shift();
-                    var search = encodeURIComponent(qSplit[0].trim());
-                    redirect = command.url + command.search + search;
-                  } 
-                  else {
-                    redirect = command.url;
-                  }
-                }
-
-              });
-
-            window.location.href = redirect;
+      if (event) event.preventDefault();
+      const query = searchInput.value.trim();
+      if (!query){
+       searchInput.value = '';
+      }
+      window.location.href = parse(query)
        } ,  false);
+
+function parse(query){
+      let redirectUrl = CONFIG.defaultSearch + encodeURIComponent(query);
+
+      if (query.match(CONFIG.urlRegex)) {
+        const hasProtocol = query.match(CONFIG.protocolRegex);
+        redirectUrl = hasProtocol ? query : 'http://' + query;
+      } else {
+        const splitSearch = query.split(CONFIG.searchDelimiter);
+        const splitPath = query.split(CONFIG.pathDelimiter);
+
+
+        CONFIG.commands.forEach(command => {
+          var isSearch = splitSearch[0] === command.key;
+          var isPath = splitPath[0] === command.key;
+
+          if (isSearch || isPath) {
+            if (splitSearch[1] && command.search) {
+              redirectUrl = prepSearch(command, splitSearch);
+            } else if (splitPath[1]) {
+              redirectUrl = prepPath(command, splitPath);
+            } else {
+              redirectUrl = command.url;
+            }
+
+            return true;
+          }
+        });
+      }
+
+      return redirectUrl;
+}
+
+    function prepPath(command, query) {
+      const path = shiftAndTrim(query, CONFIG.pathDelimiter);
+      return `${command.url}/${path}`;
+    }
+
+    function prepSearch(command, query) {
+      const search = shiftAndTrimAndEncode(query, CONFIG.searchDelimiter);
+      return `${command.url}${command.search}${search}`;
+    }
+
+    function shiftAndTrim(arr, delimiter) {
+      arr.shift();
+      return arr.join(delimiter).trim();
+    }
+
+    function shiftAndTrimAndEncode(arr, delimiter) {
+      return encodeURIComponent(shiftAndTrim(arr, delimiter));
+    }
+
+
     </script>
 </body>
 
