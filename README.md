@@ -1,5 +1,5 @@
 # home
-🏡 is where the browser starts.  
+🏠 is where the browser starts.  
 A super lightweight and self-contained startpage.  
 
 #### The status bar (from left to right):
