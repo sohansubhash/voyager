@@ -54,8 +54,8 @@
          { key: 'b', url: 'https://bcourses.berkeley.edu'},
          { key: 'c', url: 'https://calcentral.berkeley.edu/dashboard/'},
          { key: 'd', url: 'https://drive.google.com/drive', search: '/search?q=' },
-         { key: 'g', url: 'https://mail.google.com', search: '/mail/u/0/#search/' },
-         { key: 'gh', url: 'https://github.com', search: '/search?q=' },
+         { key: 'gm', url: 'https://mail.google.com', search: '/mail/u/0/#search/' },
+         { key: 'g', url: 'https://github.com', search: '/search?q=' },
          { key: 'gs', url: 'https://www.gradescope.com' },
          { key: 'h', url: 'https://hn.algolia.com', search: '/?query=' },
          { key: 'hbo', url: 'play.hbogo.com' },
@@ -63,7 +63,7 @@
          { key: 'p', url: 'https://pinboard.in/', search: '/search/u:ssbash/?query=' },
          { key: 'ph', url: 'https://www.producthunt.com', search: '/search?q=' },
          { key: 'pi', url: 'https://piazza.com', search: '/search?q=' },
-         { key: 'pm', url: 'https://drive.google.com/drive', search: '/search?q=' },
+         { key: 'pm', url: 'https://mail.protonmail.com/login'},
          { key: 'r', url: 'https://www.reddit.com', search: '/search?q=' },
          { key: 't', url: 'https://twitter.com', search: '/search?q=' },
          { key: 'tw', url: 'https://www.twitch.tv/directory/following' },
@@ -74,7 +74,8 @@
     ],
 
      // if none of the keys are matched, this is used for searching
-     defaultSearch: 'https://www.google.com/search?q=',
+     //defaultSearch: 'https://www.google.com/search?q=',
+     defaultSearch: 'https://duckduckgo.com/?q=',
 
     // the delimiter between the key and your search query.
     searchDelimiter: ':',
@@ -90,18 +91,23 @@
     protocolRegex: /^[a-zA-Z]+:\/\//i,
 
     // Enter your coordinates here
-    latitude: 37.8719, 
-    longitude: -122.2585
-   };
+    // Berkeley Coords
+    // latitude: 37.8719, 
+    // longitude: -122.2585
+    latitude: 12.327334, 
+    longitude: 76.640847
+  };
 
   const DAY = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
 
-  var today = new Date();
+  var today = new Date(Date.now());
   var sols = SunCalc.getTimes(today, CONFIG.latitude, CONFIG.longitude)
 
   var diffweek = Math.round(Math.abs((6 - today.getDay()))); //excuding today
   var diffmonth = Math.round(Math.abs((today.getTime() - nextMonth(today).getTime()) / (DAY)));
   var diffyear = Math.round(Math.abs((today.getTime() - nextYear(today).getTime()) / (DAY)));
+
+  var dayprog =  Math.round(100 * (1 - (nextDay(today).getTime() - today.getTime())/DAY));
 
   var sunrise = sols.sunrise;
   var sunset = sols.sunset;
@@ -113,6 +119,10 @@
       soltext = "SUNSET ";
   }
 
+  function nextDay(date) {
+      return new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1, 0, 0, 0);
+  }
+
   function nextMonth(date) {
       return new Date(date.getFullYear(), date.getMonth() + 1, 0);
   }
@@ -121,16 +131,21 @@
       return new Date(date.getFullYear() + 1, 0, 0);
   }
 
-  function display_solar(date, text) {
-      document.getElementById("solar").innerHTML = text + date.getHours() + ":" + date.getMinutes();
+  function display_solar(date, text, prog) {
+      document.getElementById("solar").innerHTML = text + date.getHours() + ":" + date.getMinutes() ;
+
+      document.getElementById("solar").style.backgroundImage = "linear-gradient(to right, var(--dayprog) 0%, var(--dayprog)" + prog +"%, var(--solar)" + prog + "%, var(--solar) 100%)";
+	  
   }
 
-  function display_daysleft(week, month, year) {
+  function display_daysleft(week, month, year, prog) {
       document.getElementById("daysleft").innerHTML = week + " &#9679; " + month + " &#9679; " + year;
+      document.getElementById("daysleft").style.backgroundImage = "linear-gradient(to right, var(--weekprog) 0%, var(--weekprog)" + prog +"%, var(--daysleft)" + prog + "%, var(--daysleft) 100%)";
+	  
   }
 
-  display_solar(soldate, soltext);
-  display_daysleft(diffweek, diffmonth, diffyear);
+  display_solar(soldate, soltext, dayprog);
+  display_daysleft(diffweek, diffmonth, diffyear, dayprog);
 
 
   var searchForm = document.getElementById("search-form");
