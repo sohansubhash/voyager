@@ -1,4 +1,5 @@
 #exclude fonts because font piracy is bad
 /fonts/*
+/fonts/.DS_Store
 */.DS_Store
 */.DS_Store?
