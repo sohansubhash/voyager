@@ -1,13 +1,13 @@
-# home
-🏠 is where the browser starts.  
+# voyager
+🛰️ is where the browser starts.  
 A super lightweight and self-contained startpage.  
 
 #### The status bar (from left to right):
-	- counter for the days left in the week : month : year (excluding today)
+	- percentage of time elapsed in the week : month : year
 	- search (see below for commands)
 	- sunrise/sunset info
-
-
+	- progress bars on the left and right of the search show the percentage of time elapsed in the year and day, respectively
+	
 ![Screenshot](screenshot.png?raw=true "Screenshot")
 
 #### search box usage
