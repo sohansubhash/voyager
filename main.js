@@ -67,7 +67,7 @@
 
   function dayProg(date) {
       var tomorrow = new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1, 0, 0, 0);
-	  return Math.round(100 * (1 - (tomorrow.getTime() - date.getTime())/DAY)) +80;
+	  return Math.round(100 * (1 - (tomorrow.getTime() - date.getTime())/DAY));
   }
 
   function weekProg(date) {
