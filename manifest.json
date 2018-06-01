@@ -1,0 +1,10 @@
+{
+
+  "manifest_version": 2,
+  "name": "Voyager",
+  "version": "0.1",
+  "description": "Replaces your new tab page, with a much better one",
+  "chrome_url_overrides" : {
+    "newtab": "index.html"
+  }
+}

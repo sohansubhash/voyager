@@ -1,35 +1,45 @@
 :root {
-  --bckgrnd: #fdf6e3;
-  --linkgarden: #eee8d5;
+  --bckgrnd: #23272a;
+  --linkgarden: #23272a;
 
   /*text colors*/  
-  --text: #839496;
+  --text: #E4FDE1;
   --black: #839496;
   --negative: #fdf6e3;
 
   /*row colors*/  
-  --row0: #859900;
-  --row1: #cb4b16;
-  --row2: #268bd2;    
-  --row3: #2aa198;
+  --row0: #a2a3a1;
+  --row1: #e7b05a;
+  --row2: #83aa95;    
+  --row3: #34608f;
 
   /*succulent colors*/  
-  --daysleft: #657b83;
-  --leafsearch: #073642;
-  --solar: #657b83;
+  --daysleft: #2c2f33;
+  --leafsearch: #2c2f33;
+  --solar: #2c2f33;
 
-  --dayprog: #93a1a1;
-  --weekprog: #93a1a1;
- 
+  --dayprog: #f25f5c;
+  --weekprog: #3db9e8;
+
+/* https://coolors.co/a2a3a1-e7b05a-3db9e8-ea5455-83aa95 */  
+/*https://coolors.co/a2a3a1-e7b05a-34608f-f25f5c-83aa95*/
 }
 
 
 @font-face {
 font-family: 'Apercu';
-src: url('fonts/apercu-mono-regular.ttf');  	
+src: url('fonts/apercu-mono-regular.ttf');
 }
 
+@font-face {
+font-family: 'DDCHardware';
+src: url('fonts/DDCHardware-Regular.otf');  	
+}
 
+@font-face {
+font-family: 'ONRAMP';
+src: url('fonts/ONRAMP.ttf');  	
+}
 body {
 font-family:'Apercu', monospace;
 background-color: var(--bckgrnd);

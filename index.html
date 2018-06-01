@@ -8,6 +8,7 @@
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
+
   <div class="linkgarden">
     <div class="linklabel"> UTILITY </div>
     <a class="row0" href="https://mail.google.com/"><div class="linkplant">  GMAIL </div></a> 
@@ -39,7 +40,7 @@
     <a class="row3" href="https://calcentral.berkeley.edu/dashboard/"><div class="linkplant"> CALCENTRAL </div></a> 
     <a class="row3" href="https://piazza.com/"><div class="linkplant"> PIAZZA </div></a>
 
-    <div class="succulent" id="daysleft" title="Days left in the week, month, year"></div>
+    <div class="succulent" id="daysleft" title="Percentage of time elapsed in the week, month, year"></div>
     <div class="succulent" id="solar" title="sunrise/sunset time"></div>
     <div class="succulent" id="leafsearch" title="search">
       <form autocomplete="off" id="search-form" >
@@ -48,167 +49,67 @@
     </div>
   </div>
 
-  <script type="text/javascript">
-  const CONFIG = {
-    commands: [
-         { key: 'b', url: 'https://bcourses.berkeley.edu'},
-         { key: 'c', url: 'https://calcentral.berkeley.edu/dashboard/'},
-         { key: 'd', url: 'https://drive.google.com/drive', search: '/search?q=' },
-         { key: 'gm', url: 'https://mail.google.com', search: '/mail/u/0/#search/' },
-         { key: 'g', url: 'https://github.com', search: '/search?q=' },
-         { key: 'gs', url: 'https://www.gradescope.com' },
-         { key: 'h', url: 'https://hn.algolia.com', search: '/?query=' },
-         { key: 'hbo', url: 'play.hbogo.com' },
-         { key: 'n', url: 'https://netflix.com', search: '/search?q=' },
-         { key: 'p', url: 'https://pinboard.in/', search: '/search/u:ssbash/?query=' },
-         { key: 'ph', url: 'https://www.producthunt.com', search: '/search?q=' },
-         { key: 'pi', url: 'https://piazza.com', search: '/search?q=' },
-         { key: 'pm', url: 'https://mail.protonmail.com/login'},
-         { key: 'r', url: 'https://www.reddit.com', search: '/search?q=' },
-         { key: 't', url: 'https://twitter.com', search: '/search?q=' },
-         { key: 'tw', url: 'https://www.twitch.tv/directory/following' },
-         { key: 'v', url: 'https://www.theverge.com', search: '/search?q=' },
-         { key: 'vm', url: 'https://vimeo.com', search: '/search?q=' },
-         { key: 'w', url: 'https://wired.com', search: '/search/?q=' },
-         { key: 'y', url: 'https://www.youtube.com', search: '/results?search_query=' }
-    ],
-
-     // if none of the keys are matched, this is used for searching
-     //defaultSearch: 'https://www.google.com/search?q=',
-     defaultSearch: 'https://duckduckgo.com/?q=',
-
-    // the delimiter between the key and your search query.
-    searchDelimiter: ':',
-
-    // the delimiter between the key and a path.
-    pathDelimiter: '/',
-
-    // used for determining when to redirect directly to a url.
-    urlRegex: /^(?:(http|https)?:\/\/)?(?:[\w-]+\.)+([a-z]|[A-Z]|[0-9]){2,6}/i,
-
-    // if "urlRegex" matches but this doesn't, "http://" will be
-    // prepended to the beginning of the query before redirecting.
-    protocolRegex: /^[a-zA-Z]+:\/\//i,
-
-    // Enter your coordinates here
-    // Berkeley Coords
-    // latitude: 37.8719, 
-    // longitude: -122.2585
-    latitude: 12.327334, 
-    longitude: 76.640847
-  };
-
-  const DAY = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
-
-  var today = new Date(Date.now());
-  var sols = SunCalc.getTimes(today, CONFIG.latitude, CONFIG.longitude)
-
-  var diffweek = Math.round(Math.abs((6 - today.getDay()))); //excuding today
-  var diffmonth = Math.round(Math.abs((today.getTime() - nextMonth(today).getTime()) / (DAY)));
-  var diffyear = Math.round(Math.abs((today.getTime() - nextYear(today).getTime()) / (DAY)));
-
-  var dayprog =  Math.round(100 * (1 - (nextDay(today).getTime() - today.getTime())/DAY));
-
-  var sunrise = sols.sunrise;
-  var sunset = sols.sunset;
-
-  var soldate = sunrise;
-  var soltext = "SUNRISE ";
-  if (today > sunrise && today < sunset) {
-      soldate = sunset;
-      soltext = "SUNSET ";
-  }
-
-  function nextDay(date) {
-      return new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1, 0, 0, 0);
-  }
-
-  function nextMonth(date) {
-      return new Date(date.getFullYear(), date.getMonth() + 1, 0);
-  }
-
-  function nextYear(date) {
-      return new Date(date.getFullYear() + 1, 0, 0);
-  }
-
-  function display_solar(date, text, prog) {
-      document.getElementById("solar").innerHTML = text + date.getHours() + ":" + date.getMinutes() ;
-
-      document.getElementById("solar").style.backgroundImage = "linear-gradient(to right, var(--dayprog) 0%, var(--dayprog)" + prog +"%, var(--solar)" + prog + "%, var(--solar) 100%)";
-	  
-  }
-
-  function display_daysleft(week, month, year, prog) {
-      document.getElementById("daysleft").innerHTML = week + " &#9679; " + month + " &#9679; " + year;
-      document.getElementById("daysleft").style.backgroundImage = "linear-gradient(to right, var(--weekprog) 0%, var(--weekprog)" + prog +"%, var(--daysleft)" + prog + "%, var(--daysleft) 100%)";
-	  
-  }
-
-  display_solar(soldate, soltext, dayprog);
-  display_daysleft(diffweek, diffmonth, diffyear, dayprog);
-
-
-  var searchForm = document.getElementById("search-form");
-  var searchInput = document.getElementById("search-input");
-
-  searchForm.addEventListener('submit', function(event) {
-      if (event) event.preventDefault();
-      const query = searchInput.value.trim();
-      if (!query) {
-          searchInput.value = '';
-      }
-      window.location.href = parse(query)
-  }, false);
-
-  function parse(query) {
-      let redirectUrl = CONFIG.defaultSearch + encodeURIComponent(query);
-
-      if (query.match(CONFIG.urlRegex)) {
-          const hasProtocol = query.match(CONFIG.protocolRegex);
-          redirectUrl = hasProtocol ? query : 'http://' + query;
-      } else {
-          const splitSearch = query.split(CONFIG.searchDelimiter);
-          const splitPath = query.split(CONFIG.pathDelimiter);
-
-
-          CONFIG.commands.forEach(command => {
-              var isSearch = splitSearch[0] === command.key;
-              var isPath = splitPath[0] === command.key;
-
-              if (isSearch || isPath) {
-                  if (splitSearch[1] && command.search) {
-                      redirectUrl = prepSearch(command, splitSearch);
-                  } else if (splitPath[1]) {
-                      redirectUrl = prepPath(command, splitPath);
-                  } else {
-                      redirectUrl = command.url;
-                  }
-                  return true;
-              }
-          });
-      }
-
-      return redirectUrl;
-  }
-
-  function prepPath(command, query) {
-      const path = shiftAndTrim(query, CONFIG.pathDelimiter);
-      return `${command.url}/${path}`;
-  }
-
-  function prepSearch(command, query) {
-      const search = shiftAndTrimAndEncode(query, CONFIG.searchDelimiter);
-      return `${command.url}${command.search}${search}`;
-  }
-
-  function shiftAndTrim(arr, delimiter) {
-      arr.shift();
-      return arr.join(delimiter).trim();
-  }
-
-  function shiftAndTrimAndEncode(arr, delimiter) {
-      return encodeURIComponent(shiftAndTrim(arr, delimiter));
-  }
-  </script>
 </body>
+ <script src="main.js" type="text/javascript"></script>
 </html>
+<!--     <div class="linklabel"> UTILITY </div>
+    <a class="row0" href="https://mail.google.com/"><div class="linkplant">  GMAIL </div></a> 
+    <a class="row0" href="https://mail.protonmail.com/login"><div class="linkplant"> PROTONMAIL </div></a>
+    <a class="row0" href="https://pinboard.in/u:ssbash/"><div class="linkplant"> PINBOARD </div></a>
+    <a class="row0" href="https://github.com/"><div class="linkplant">  GITHUB </div></a>
+    <a class="row0" href="https://drive.google.com/"><div class="linkplant"> DRIVE </div></a>
+
+    <div class="linklabel"> DISTRACT </div>
+    <a class="row1" href="https://www.reddit.com/"><div class="linkplant"> REDDIT </div></a> 
+    <a class="row1" href="https://news.ycombinator.com/"><div class="linkplant"> HACKERNEWS </div></a> 
+    <a class="row1" href="http://producthunt.com/"><div class="linkplant"> PRODUCTHUNT </div></a> 
+    <a class="row1" href="https://twitter.com/"><div class="linkplant"> TWITTER </div></a> 
+    <a class="row1" href="http://www.theverge.com/"><div class="linkplant"> THEVERGE </div></a> 
+    <a class="row1" href="http://wired.com/"><div class="linkplant"> WIRED </div></a>
+    
+    <div class="linklabel"> VIDEO </div>
+    <a class="row2" href="https://www.youtube.com"><div class="linkplant"> YOUTUBE </div></a> 
+    <a class="row2" href="https:///www.twitch.tv"><div class="linkplant"> TWITCH </div></a> 
+    <a class="row2" href="https://vimeo.com"><div class="linkplant"> VIMEO </div></a> 
+    <a class="row2" href="https://netflix.com"><div class="linkplant"> NETFLIX </div></a> 
+    <a class="row2" href="https://play.hbogo.com/"><div class="linkplant"> HBOGO </div></a>
+
+    <div class="linklabel"> SCHOOL </div>
+    <a class="row3" href="http://inst.eecs.berkeley.edu/~cs161/sp18/"><div class="linkplant"> CS161 </div></a> 
+    <a class="row3" href="https://cs162.eecs.berkeley.edu/"><div class="linkplant"> CS162 </div></a> 
+    <a class="row3" href="https://www.gradescope.com/"><div class="linkplant"> GRADESCOPE </div></a>
+    <a class="row3" href="https://bcourses.berkeley.edu/"><div class="linkplant"> BCOURSES </div></a> 
+    <a class="row3" href="https://calcentral.berkeley.edu/dashboard/"><div class="linkplant"> CALCENTRAL </div></a> 
+    <a class="row3" href="https://piazza.com/"><div class="linkplant"> PIAZZA </div></a>
+ -->
+
+<!--      <div class="linklabel"> UTILITY </div>
+    <a class="row0" href="https://mail.google.com/"><div class="linkplant">  gmail </div></a> 
+    <a class="row0" href="https://mail.protonmail.com/login"><div class="linkplant"> protonmail </div></a>
+    <a class="row0" href="https://pinboard.in/u:ssbash/"><div class="linkplant"> pinboard </div></a>
+    <a class="row0" href="https://github.com/"><div class="linkplant">  github </div></a>
+    <a class="row0" href="https://drive.google.com/"><div class="linkplant"> drive </div></a>
+
+    <div class="linklabel"> DISTRACT </div>
+    <a class="row1" href="https://www.reddit.com/"><div class="linkplant"> reddit </div></a> 
+    <a class="row1" href="https://news.ycombinator.com/"><div class="linkplant"> hacker news </div></a> 
+    <a class="row1" href="http://producthunt.com/"><div class="linkplant"> product hunt </div></a> 
+    <a class="row1" href="https://twitter.com/"><div class="linkplant"> twitter </div></a> 
+    <a class="row1" href="http://www.theverge.com/"><div class="linkplant"> the verge </div></a> 
+    <a class="row1" href="http://wired.com/"><div class="linkplant"> wired </div></a>
+    
+    <div class="linklabel"> VIDEO </div>
+    <a class="row2" href="https://www.youtube.com"><div class="linkplant"> youtube </div></a> 
+    <a class="row2" href="https:///www.twitch.tv"><div class="linkplant"> twitch </div></a> 
+    <a class="row2" href="https://vimeo.com"><div class="linkplant"> vimeo </div></a> 
+    <a class="row2" href="https://netflix.com"><div class="linkplant"> netflix </div></a> 
+    <a class="row2" href="https://play.hbogo.com/"><div class="linkplant"> hbo go </div></a>
+
+    <div class="linklabel"> SCHOOL </div>
+    <a class="row3" href="http://inst.eecs.berkeley.edu/~cs161/sp18/"><div class="linkplant"> cs161 </div></a> 
+    <a class="row3" href="https://cs162.eecs.berkeley.edu/"><div class="linkplant"> cs162 </div></a> 
+    <a class="row3" href="https://www.gradescope.com/"><div class="linkplant"> gradescope </div></a>
+    <a class="row3" href="https://bcourses.berkeley.edu/"><div class="linkplant"> bcourses </div></a> 
+    <a class="row3" href="https://calcentral.berkeley.edu/dashboard/"><div class="linkplant"> calcentral </div></a> 
+    <a class="row3" href="https://piazza.com/"><div class="linkplant"> piazza </div></a>
+ -->
