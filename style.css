@@ -37,11 +37,11 @@ src: url('fonts/DDCHardware-Regular.otf');
 }
 
 @font-face {
-font-family: 'ONRAMP';
-src: url('fonts/ONRAMP.ttf');  	
+font-family: 'Duospace';
+src: url('fonts/iAWriterDuospace-Regular.otf');  	
 }
 body {
-font-family:'Apercu', monospace;
+font-family:'Duospace', 'Apercu', monospace;
 background-color: var(--bckgrnd);
   display: flex;
   justify-content: center;
