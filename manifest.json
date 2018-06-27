@@ -1,10 +1,20 @@
 {
-
   "manifest_version": 2,
   "name": "Voyager",
-  "version": "0.1",
+  "version": "0.2",
   "description": "Replaces your new tab page, with a much better one",
   "chrome_url_overrides" : {
     "newtab": "index.html"
-  }
+  },
+    "developer": {
+    "name": "Sohan Subhash",
+    "url": "https://github.com/sohansubhash/voyager"
+  },
+    "icons": {
+    "48": "icon.svg",
+    "96": "icon.svg"
+  },
+    "omnibox": {
+    "keyword" : "voyage"
+  },
 }
