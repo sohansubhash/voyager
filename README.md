@@ -8,7 +8,7 @@ A super lightweight and self-contained startpage.
 	- sunrise/sunset info
 	- progress bars on the left and right of the search show the percentage of time elapsed in the year and day, respectively
 	
-![Screenshot](screenshot.png?raw=true "Screenshot")
+![Screenshot](/images/screenshot.png?raw=true "Screenshot")
 
 #### search box usage
 ```

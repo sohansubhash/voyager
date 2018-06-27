@@ -11,10 +11,7 @@
     "url": "https://github.com/sohansubhash/voyager"
   },
     "icons": {
-    "48": "icon.svg",
-    "96": "icon.svg"
-  },
-    "omnibox": {
-    "keyword" : "voyage"
-  },
+    "48": "/images/icon.svg",
+    "96": "/images/icon.svg"
+  }
 }
