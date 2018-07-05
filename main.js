@@ -1,3 +1,24 @@
+  const LINKS = {
+  	b: ('https://bcourses.berkeley.edu', ''),
+      c: ('https://calcentral.berkeley.edu/dashboard/', ''),
+      d: ('https://drive.google.com/drive', '/search?q='),
+      gm: ('https://mail.google.com', '/mail/u/0/#search/'),
+      g: ('https://github.com', '/search?q='),
+      gs: ('https://www.gradescope.com', ""),
+      h: ('https://hn.algolia.com', '/?query='),
+      hbo: ('play.hbogo.com', ''),
+      n: ('https://netflix.com', '/search?q='),
+      p: ('https://pinboard.in/', '/search/u:ssbash/?query='),
+      ph: ('https://www.producthunt.com', '/search?q='),
+      pi: ('https://piazza.com', '/search?q='),
+      pm: ('https://mail.protonmail.com/login'),
+      r: ('https://www.reddit.com', '/search?q='),
+      t: ('https://twitter.com', '/search?q='),
+      tw: ('https://www.twitch.tv/directory/following', ''),
+      v: ('https://www.theverge.com','/search?q='),
+      vm: ('https://vimeo.com','/search?q='),
+      w: ('https://wired.com', '/search/?q='),
+      y: ('https://www.youtube.com', '/results?search_query=') };
   const CONFIG = {
     commands: [
          { key: 'b', url: 'https://bcourses.berkeley.edu'},
@@ -41,10 +62,8 @@
 
     // Enter your coordinates here
     // Berkeley Coords
-    // latitude: 37.8719, 
-    // longitude: -122.2585
-    latitude: 12.327334, 
-    longitude: 76.640847
+     latitude: 37.8719, 
+     longitude: -122.2585
   };
 
   const DAY = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
@@ -115,6 +134,28 @@
       window.location.href = parse(query)
   }, false);
 
+//  search, simply use duckduckgo url and append query: "500 Days of Summer"
+//  URL:
+	// includes protocol: "https://subhash.co"
+	// lacks protocol: "example.com"
+		// create a default protocol in CONFIG dict, for now lets use http
+// special character avoidance:
+	// '.' can confuse searchs containing '.' for URL
+	// '/' path delimiter and ':' search delimiter
+	// we must create some sort of escape character for searches with these chars
+
+// command key usage
+	//  key = LINK.url
+	//  key + ':' or '/' + query
+
+//defualt result should be set to search
+// then URL regex
+// split the query based on delimters
+//check if first entry is in dict
+	// if there is only one entry 
+		// LINK.url
+	//
+
   function parse(query) {
       let redirectUrl = CONFIG.defaultSearch + encodeURIComponent(query);
 
@@ -125,7 +166,16 @@
           const splitSearch = query.split(CONFIG.searchDelimiter);
           const splitPath = query.split(CONFIG.pathDelimiter);
 
+// for every command
+// var isSearch = checks if search key is in LINK dictionary
+// var isPath = checks if path key is in LINK dictionary
 
+// if ( isSearch or isPath)
+	// if there is a search query and the command has a search url
+		// prepSearch
+	// else if there is a path query 
+		// prepPath
+	// else -> go to command url
           CONFIG.commands.forEach(command => {
               var isSearch = splitSearch[0] === command.key;
               var isPath = splitPath[0] === command.key;

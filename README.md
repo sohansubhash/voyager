@@ -22,7 +22,7 @@ gh: twitter	# searches github for twitter
 n: friends	# searchs netflix for friends
 ```
 
-#### list of keys
+#### list of default keys
 ```
 g: gmail		y: youtube
 pm: protonmail		tw: twitch
