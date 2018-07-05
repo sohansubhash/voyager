@@ -6,9 +6,9 @@ A super lightweight and self-contained startpage.
 	- percentage of time elapsed in the week : month : year
 	- search (see below for commands)
 	- sunrise/sunset info
-	- progress bars on the left and right of the search show the percentage of time elapsed in the year and day, respectively
+	- progress in the year on the left and day on the right
 	
-![Screenshot](screenshot.png?raw=true "Screenshot")
+![Screenshot](/images/screenshot.png?raw=true "Screenshot")
 
 #### search box usage
 ```
