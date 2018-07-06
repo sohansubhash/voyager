@@ -1,0 +1,173 @@
+:root {
+  --bckgrnd: #23272a;
+  --linkgarden: #23272a;
+
+  /*text colors*/  
+  --text: #E4FDE1;
+  --black: #839496;
+  --negative: #fdf6e3;
+
+  /*row colors*/  
+  --row0: #a2a3a1;
+  --row1: #e7b05a;
+  --row2: #83aa95;    
+  --row3: #34608f;
+
+  /*succulent colors*/  
+  --daysleft: #2c2f33;
+  --leafsearch: #2c2f33;
+  --solar: #2c2f33;
+
+  --dayprog: #f25f5c;
+  --weekprog: #3db9e8;
+
+/* https://coolors.co/a2a3a1-e7b05a-3db9e8-ea5455-83aa95 */  
+/*https://coolors.co/a2a3a1-e7b05a-34608f-f25f5c-83aa95*/
+}
+
+
+@font-face {
+font-family: 'Apercu';
+src: url('fonts/apercu-mono-regular.ttf');
+}
+
+@font-face {
+font-family: 'DDCHardware';
+src: url('fonts/DDCHardware-Regular.otf');  	
+}
+
+@font-face {
+font-family: 'Duospace';
+src: url('fonts/iAWriterDuospace-Regular.otf');  	
+}
+body {
+font-family:'Duospace', 'Apercu', monospace;
+background-color: var(--bckgrnd);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0; height: 100vh; overflow: hidden;
+}
+
+a {
+      text-decoration: none;  
+}
+
+
+  input:focus {
+    margin: 0;
+    border: 0;
+    outline: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+
+  input {
+  border: none;
+  padding: 0;
+  text-align: left;
+  background-color: inherit;
+  color: inherit;
+  font:inherit;
+  line-height: 1em;
+  
+  }
+
+/*This our grid container for our links*/
+.linkgarden {
+  background: var(--linkgarden);
+  padding: 2.5em;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(4, 1em 2.5em) 2.5em;
+  grid-gap: 2.5em;
+}
+
+.linkplant{
+  color: inherit;
+  line-height: 2.5em;
+  text-align: center;
+  font-size: 1em;
+  padding: 0 0.25em 0 0.25em;
+  transition: ease-in-out 0.085s;
+}
+
+.linklabel {
+  color: var(--text);
+  font-size: 1em;
+  font-weight: normal;
+  margin: 0;
+  grid-column: 1 / 1;
+  line-height: 1em;
+}
+
+.succulent{
+  font-size: 1em;
+  font-weight: normal;
+  margin: 0;
+  grid-row: 9 / 9; 
+  text-align: center;
+  line-height: 2.5em;
+  color: var(--negative);
+}
+
+
+#daysleft {
+  grid-column: 1 / 3;
+}
+
+#leafsearch {
+  background-color: var(--leafsearch);
+  grid-column: 3/ 5;
+}
+
+#solar {
+  grid-column: 5/ 7;
+}
+
+/*These are the classes for each row: customize accordingly*/
+.row0 {
+  color: var(--text); 
+      grid-row: 2 / 2; 
+  grid-column-: 1/6;
+}
+
+.row1 {
+  color: var(--text); 
+ grid-row: 4 / 4; 
+  grid-column-start: 1/6;
+}
+
+.row2 {
+  color: var(--text);
+  grid-row: 6 / 6;
+  grid-column-start: 1/6;
+
+}
+
+.row3 {
+  color: var(--text); 
+  grid-row: 8 / 8;
+  grid-column-start: 1/6;
+
+}
+
+.row0:hover {
+  background-color: var(--row0);
+  color: var(--negative);  
+}
+
+.row1:hover {
+  background-color: var(--row1);
+  color: var(--negative);    
+}
+
+.row2:hover {
+  background-color: var(--row2);
+  color: var(--negative);  
+}
+
+.row3:hover {
+  background-color: var(--row3);
+  color: var(--negative);  
+}
