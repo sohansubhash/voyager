@@ -1,8 +1,8 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "Voyager",
-  "version": "0.2",
-  "description": "Replaces your new tab page, with a much better one",
+  "version": "0.3",
+  "description": "Replaces your new tab page",
   "chrome_url_overrides" : {
     "newtab": "index.html"
   },
@@ -13,5 +13,11 @@
     "icons": {
     "48": "/images/icon.svg",
     "96": "/images/icon.svg"
-  }
+  },
+  "permissions": [
+	 "bookmarks" 
+  ],
+  "background": {
+  "scripts": ["background.js"]
+}
 }

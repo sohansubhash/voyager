@@ -46,7 +46,8 @@
      // if none of the keys are matched, this is used for searching
      //defaultSearch: 'https://www.google.com/search?q=',
      defaultSearch: 'https://duckduckgo.com/?q=',
-
+     // parameters for ddg
+     ddgParams: '&kp=-1&kl=us-en&kz=1&kc=1&kav=-1&kn=-1&kf=1&kaf=1&kac=-1&kd=1&kh=1&kg=g&k5=1&kae=d&ks=n&kw=n&km=l&ka=p&ku=1&kt=p&ko=s&k1=-1&kv=1&kaj=u&kam=apple-maps',
     // the delimiter between the key and your search query.
     searchDelimiter: ':',
 
@@ -155,7 +156,7 @@
 	//
 
   function parse(query) {
-      let redirectUrl = CONFIG.defaultSearch + encodeURIComponent(query);
+      let redirectUrl = CONFIG.defaultSearch + encodeURIComponent(query) + CONFIG.ddgParams;
 
       if (query.match(CONFIG.urlRegex)) {
           const hasProtocol = query.match(CONFIG.protocolRegex);
