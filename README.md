@@ -8,7 +8,7 @@ A super lightweight and self-contained startpage.
 	- sunrise/sunset info
 	- progress in the year on the left and day on the right
 	
-![Screenshot](/images/screenshot.png?raw=true "Screenshot")
+![Screenshot](/screenshot.png?raw=true "Screenshot")
 
 #### search box usage
 ```
